@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: latako-stebejimas
+    runtime: php
+    buildCommand: |
+      curl -sS https://getcomposer.org/installer | php
+      php composer.phar require cboden/ratchet
+    startCommand: |
+      php ws-server.php &
+      php -S 0.0.0.0:10000 -t public
+    envVars:
+      - key: DB_HOST
+        value: latakas-2c957c92-ku-7312.l.aivencloud.com
+      - key: DB_PORT
+        value: 26099
+      - key: DB_USER
+        value: avnadmin
+      - key: DB_PASSWORD
+        value: AVNS_O218wwrMWicUdZRG7EK
+      - key: DB_NAME
+        value: defaultdb

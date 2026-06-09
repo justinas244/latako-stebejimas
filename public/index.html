@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💧 Latako Vandens Stebėjimo Sistema su WebSocket</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>💧 Latako Vandens Stebėjimo Sistema</h1>
+        <p>Realaus laiko monitoringas su WebSocket (be Redis)</p>
+        <span class="badge" id="wsBadge">🔌 WebSocket: JUNGASI...</span>
+    </div>
+
+    <div class="control-panel">
+        <div class="control-buttons">
+            <button class="btn btn-start" id="startBtn">▶ Pradėti</button>
+            <button class="btn btn-stop" id="stopBtn">⏹ Stop</button>
+            <button class="btn btn-clear" id="clearBtn">🗑 Išvalyti</button>
+            <button class="btn btn-export" id="exportBtn">📥 Eksportuoti</button>
+        </div>
+        <div class="status status-stopped" id="status">⭕ ĮRAŠYMAS SUSTABDYTA</div>
+    </div>
+
+    <div class="chart-container">
+        <h2>📊 Vandens Lygio Grafikas (Realus laikas)</h2>
+        <canvas id="waterChart"></canvas>
+    </div>
+
+    <div class="stats">
+        <h2>📈 Statistika</h2>
+        <div class="stats-grid">
+            <div class="stat-card"><h3>Dabartinis</h3><div class="value" id="currentLevel">0.00 cm</div></div>
+            <div class="stat-card"><h3>Vidutinis</h3><div class="value" id="avgLevel">0.00 cm</div></div>
+            <div class="stat-card"><h3>Maksimalus</h3><div class="value" id="maxLevel">0.00 cm</div></div>
+            <div class="stat-card"><h3>Minimalus</h3><div class="value" id="minLevel">0.00 cm</div></div>
+            <div class="stat-card"><h3>Matavimų</h3><div class="value" id="totalMeasurements">0</div></div>
+        </div>
+    </div>
+
+    <div class="data-table">
+        <h2>📋 Paskutiniai matavimai</h2>
+        <div class="table-wrapper">
+            <table id="measurementsTable">
+                <thead><tr><th>Vandens lygis (cm)</th><th>Laikas</th></tr></thead>
+                <tbody id="tableBody"><tr><td colspan="2">Kraunama......</td></tr></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="connection-status" id="connectionStatus">🟢 WebSocket: Prisijungta</div>
+
+<script src="script.js"></script>
+</body>
+</html>
