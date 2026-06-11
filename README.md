@@ -1,2 +1,0 @@
-# latako-stebejimas
-testinimas
